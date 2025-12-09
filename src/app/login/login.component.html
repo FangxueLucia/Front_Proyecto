@@ -1,12 +1,26 @@
 <p>Login</p>
-<form>
+<form (ngSubmit)="onSubmit()">
   <div class="mb-3">
     <label for="username" class="form-label">Nombre de usuario</label>
-    <input type="text" class="form-control" id="username" />
+    <input
+      type="text"
+      class="form-control"
+      id="username"
+      name="username"
+      [ngModel]="username()"
+      (ngModelChange)="usernameChange($event)"
+    />
   </div>
   <div class="mb-3">
     <label for="password" class="form-label">Contraseña</label>
-    <input type="password" class="form-control" id="password" />
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      name="password"
+      [ngModel]="password()"
+      (ngModelChange)="passwordChange($event)"
+    />
   </div>
   <button type="submit" class="btn btn-primary">Iniciar sesión</button>
 </form>

@@ -8,7 +8,7 @@ export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    pathMatch: 'full',
+    pathMatch: 'full', // Indica a Angular que esta ruta debe coincidir con la URL raíz
   },
   {
     path: 'login',
