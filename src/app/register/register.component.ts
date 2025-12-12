@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ConnectService } from '../connect.service';
+import { ConnectService } from '../../../services/connect.services/connect.service';
 
 @Component({
   selector: 'app-register',
@@ -9,6 +9,11 @@ import { ConnectService } from '../connect.service';
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
 })
+
+//Inicia el componente de registro
+//Recibe el nombre, username, email y password del usuario y lo envía al backend para registrar al usuario
+//Si el usuario es correcto,
+//Si el usuario no es correcto, se muestra un mensaje de error
 export class RegisterComponent {
   constructor(private connectService: ConnectService) {}
 
@@ -35,6 +40,7 @@ export class RegisterComponent {
 
   async onSubmit() {
     const user = {
+      //aquí se crea un objeto con los datos del usuario
       name: this.name(),
       username: this.username(),
       email: this.email(),

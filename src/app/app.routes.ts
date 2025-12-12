@@ -3,6 +3,8 @@ import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { RetrievePasswordComponent } from './retrieve-password/retrieve-password.component';
+import { CodeComponent } from './code/code.component';
 
 export const routes: Routes = [
   {
@@ -15,8 +17,16 @@ export const routes: Routes = [
     component: LoginComponent,
   },
   {
+    path: 'retrievePassword',
+    component: RetrievePasswordComponent,
+  },
+  {
     path: 'register',
     component: RegisterComponent,
+  },
+  {
+    path: 'code',
+    component: CodeComponent,
   },
 ];
 

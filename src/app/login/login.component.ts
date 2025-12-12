@@ -1,14 +1,20 @@
 import { Component, signal } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { ConnectService } from '../connect.service';
+import { ConnectService } from '../../../services/connect.services/connect.service';
 
 @Component({
   selector: 'app-login',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterOutlet],
   standalone: true,
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
+
+//Incia el componente de inicio de sesión
+//Recibe el username y password del usuario y lo envía al backend para iniciar sesión
+//Si el usuario es correcto, se redirige a la página de inicio
+//Si el usuario no es correcto, se muestra un mensaje de error
 export class LoginComponent {
   constructor(private connectService: ConnectService) {}
   username = signal('');
@@ -20,7 +26,11 @@ export class LoginComponent {
     this.password.set($event);
   }
   async onSubmit() {
-    const res = await this.connectService.getPostDirect(this.username(), this.password());
-    console.log(res);
+    const login = {
+      //se crea un objeto con el username y password del usuario
+      username: this.username(),
+      password: this.password(),
+    };
+    await this.connectService.getPostDirect(login); //se llama al servicio para iniciar sesión
   }
 }

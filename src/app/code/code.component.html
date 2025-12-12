@@ -1,0 +1,18 @@
+<p>Restablecer contraseña</p>
+<div class="mb-3">
+  <p>Código enviado al correo</p>
+</div>
+<form (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label for="code" class="form-label">Código</label>
+    <input
+      type="text"
+      class="form-control"
+      id="code"
+      name="code"
+      [ngModel]="code()"
+      (ngModelChange)="codeChange($event)"
+    />
+  </div>
+  <button type="submit" class="btn btn-primary">Restablecer contraseña</button>
+</form>
