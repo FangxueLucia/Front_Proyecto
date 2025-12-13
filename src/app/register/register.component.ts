@@ -1,7 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ConnectService } from '../../../services/connect.services/connect.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   imports: [FormsModule],
@@ -15,7 +15,7 @@ import { ConnectService } from '../../../services/connect.services/connect.servi
 //Si el usuario es correcto,
 //Si el usuario no es correcto, se muestra un mensaje de error
 export class RegisterComponent {
-  constructor(private connectService: ConnectService) {}
+  constructor(private connectService: ConnectService, private router: Router) {}
 
   name = signal('');
   username = signal('');
@@ -48,5 +48,6 @@ export class RegisterComponent {
     };
     console.log('Register submitted', user);
     await this.connectService.register(user);
+    this.router.navigate(['/login']);
   }
 }

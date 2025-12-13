@@ -1,10 +1,10 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ConnectService } from '../../../services/connect.services/connect.service';
-import { Router } from '@angular/router';
+import { RouterOutlet, Router } from '@angular/router';
 @Component({
   selector: 'app-code',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterOutlet],
   templateUrl: './code.component.html',
   styleUrl: './code.component.css',
 })
@@ -29,12 +29,18 @@ export class CodeComponent implements OnInit {
     this.code.set($event);
   }
   async onSubmit() {
-    const checkCode = {
+    const verifyEmailAndCode = {
       checkCode: this.code(),
       email: this.email(),
     };
-    console.log('El código es: ', checkCode);
+    console.log('El código es: ', verifyEmailAndCode);
     console.log('El email es: ', this.email());
-    await this.connectService.getCode(checkCode);
+    const response = await this.connectService.getEmail(verifyEmailAndCode);
+    const emailToPass = response.email || this.email();
+    this.router.navigate(['/reset-password'], {
+      state: {
+        email: emailToPass,
+      },
+    });
   }
 }

@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ConnectService } from '../../../services/connect.services/connect.service';
 
@@ -16,7 +16,7 @@ import { ConnectService } from '../../../services/connect.services/connect.servi
 //Si el usuario es correcto, se redirige a la página de inicio
 //Si el usuario no es correcto, se muestra un mensaje de error
 export class LoginComponent {
-  constructor(private connectService: ConnectService) {}
+  constructor(private connectService: ConnectService, private router: Router) {}
   username = signal('');
   password = signal('');
   usernameChange($event: any) {
@@ -32,5 +32,6 @@ export class LoginComponent {
       password: this.password(),
     };
     await this.connectService.getPostDirect(login); //se llama al servicio para iniciar sesión
+    this.router.navigate(['/home']); //se redirige a la página de inicio
   }
 }

@@ -5,10 +5,12 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { RetrievePasswordComponent } from './retrieve-password/retrieve-password.component';
 import { CodeComponent } from './code/code.component';
+import { RessetPasswordComponent } from './resset-password/resset-password.component';
+import { ConfirmedNewPasswordComponent } from './confirmed-new-password/confirmed-new-password.component';
 
 export const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     component: HomeComponent,
     pathMatch: 'full', // Indica a Angular que esta ruta debe coincidir con la URL raíz
   },
@@ -27,6 +29,14 @@ export const routes: Routes = [
   {
     path: 'code',
     component: CodeComponent,
+  },
+  {
+    path: 'reset-password',
+    component: RessetPasswordComponent,
+  },
+  {
+    path: 'confirmed-new-password',
+    component: ConfirmedNewPasswordComponent,
   },
 ];
 

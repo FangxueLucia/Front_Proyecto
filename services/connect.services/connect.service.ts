@@ -85,4 +85,19 @@ export class ConnectService {
       return undefined;
     }
   }
+  async resetPassword(resetPassword: any): Promise<any> {
+    //función que recibe el email y la contraseña nueva y la envía al backend para resetear la contraseña
+    try {
+      const response: AxiosResponse = await instance.post('reset-password', resetPassword); //envía el email y la contraseña nueva al backend
+      console.log('Reset password response received');
+      const token = response.data.token; //obtiene el token del backend
+      if (token) {
+        this.saveToken(token); //guarda el token en localStorage
+      }
+      return response.data;
+    } catch (error) {
+      console.error('Error resetting password:', error);
+      return undefined;
+    }
+  }
 }
