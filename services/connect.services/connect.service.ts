@@ -2,7 +2,7 @@ import { Injectable, signal } from '@angular/core';
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 
 const instance: AxiosInstance = axios.create({
-  baseURL: 'http://localhost:3000/api',
+  baseURL: 'http://localhost:3000/api/auth',
 });
 instance.interceptors.request.use(
   //añade el token de autenticación a cada petición
@@ -50,6 +50,7 @@ export class ConnectService {
   async register(user: any): Promise<any> {
     //función que recibe el nombre, username, email y password del usuario y lo envía al backend para registrar al usuario
     try {
+      console.log('Register request sent');
       const response: AxiosResponse = await instance.post('register', user);
       console.log('Register response received');
       const token = response.data.token;
@@ -67,6 +68,7 @@ export class ConnectService {
     //esta función será la que obtenga el email del usuario desde el backend y compruebe si ya existe.
     // En el caso de que exista envía un código de 6 dígitos. (Es para recuperar la contraseña)
     try {
+      console.log('Email received:', verifyEmail);
       const response: AxiosResponse = await instance.post('get-email', verifyEmail);
       console.log(response.data);
       return response.data;
