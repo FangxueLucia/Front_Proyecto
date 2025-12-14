@@ -1,6 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
-import bcrypt from 'bcryptjs';
+import bcrypt from 'bcryptjs'; //sirve para realizar la comparación de contraseñas.
 const instance: AxiosInstance = axios.create({
   baseURL: 'http://localhost:3000/api/auth',
 });
@@ -41,7 +41,7 @@ export class ConnectService {
       if (token) {
         this.saveToken(token); //guarda el token en localStorage
       }
-      const match = await bcrypt.compare(login.password, response.data.password);
+      const match = await bcrypt.compare(login.password, response.data.password); //recibe la contraseña del usuario y la compara con la contraseña del backend
       if (match) {
         console.log('Password match');
         return response.data;
