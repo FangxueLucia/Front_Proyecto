@@ -1,8 +1,8 @@
 import { Injectable, signal } from '@angular/core';
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
-
+import bcrypt from 'bcryptjs';
 const instance: AxiosInstance = axios.create({
-  baseURL: 'http://localhost:3000/api',
+  baseURL: 'http://localhost:3000/api/auth',
 });
 instance.interceptors.request.use(
   //añade el token de autenticación a cada petición
@@ -41,7 +41,14 @@ export class ConnectService {
       if (token) {
         this.saveToken(token); //guarda el token en localStorage
       }
-      return response.data;
+      const match = await bcrypt.compare(login.password, response.data.password);
+      if (match) {
+        console.log('Password match');
+        return response.data;
+      } else {
+        console.log('Password does not match');
+        return undefined;
+      }
     } catch (error) {
       console.error('Error obtaining data:', error);
       return undefined;
