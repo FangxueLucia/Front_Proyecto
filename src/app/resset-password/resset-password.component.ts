@@ -1,11 +1,12 @@
-import { Component, signal, OnInit } from '@angular/core';
+import { Component, signal, OnInit, computed } from '@angular/core';
 import { ConnectService } from '../../../services/connect.services/connect.service';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet, Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-resset-password',
-  imports: [FormsModule, RouterOutlet],
+  imports: [FormsModule, RouterOutlet, CommonModule],
   templateUrl: './resset-password.component.html',
   styleUrl: './resset-password.component.css',
 })
@@ -16,6 +17,12 @@ export class RessetPasswordComponent implements OnInit {
   email = signal('');
   password = signal('');
   confirmPassword = signal('');
+  nonEqualPassword = computed(() => {
+    if (this.password() && this.confirmPassword()) {
+      return this.password() !== this.confirmPassword();
+    }
+    return false;
+  });
 
   ngOnInit(): void {
     // hace lo mismo que el ngOnInit de CodeComponent
@@ -36,17 +43,27 @@ export class RessetPasswordComponent implements OnInit {
   }
 
   async onSubmit() {
-    if (this.password() === this.confirmPassword()) {
-      // comprueba que las contraseñas coinciden
-      console.log('Las contraseñas coinciden');
-      const resetPassword = {
-        email: this.email(),
-        password: this.password(),
-      };
-      await this.connectService.resetPassword(resetPassword); // envía el email y la contraseña nueva al backend
-      this.router.navigate(['/confirmed-new-password']); //redirige a la página de confirmación
-    } else {
-      console.log('Las contraseñas no coinciden');
+    if (this.nonEqualPassword()) {
+      console.log('Las contraseñas no coinciden. No se enviará el formulario.');
+      // Opcionalmente, puedes devolver aquí para detener el envío
+      return;
+    }
+
+    // 2. Si no hay error, procede con el envío (tu código original)
+    const resetPassword = {
+      email: this.email(),
+      password: this.password(),
+    };
+
+    try {
+      const response = await this.connectService.resetPassword(resetPassword);
+      if (response) {
+        this.router.navigate(['/confirmed-new-password']);
+      } else {
+        console.log('Error al resetear la contraseña (respuesta nula)');
+      }
+    } catch (error) {
+      console.error('Error al resetear la contraseña:', error);
     }
   }
 }

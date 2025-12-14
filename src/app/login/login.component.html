@@ -21,6 +21,9 @@
       [ngModel]="password()"
       (ngModelChange)="passwordChange($event)"
     />
+    <div *ngIf="loginError()" class="alert alert-danger mt-2" role="alert" style="font-size: 0.9em">
+      Contraseña errónea. Por favor, revisa tus credenciales.
+    </div>
   </div>
   <button type="submit" class="btn btn-primary">Iniciar sesión</button>
   <a href="/retrievePassword">Recuperar contraseña</a>
