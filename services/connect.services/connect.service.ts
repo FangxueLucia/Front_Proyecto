@@ -32,6 +32,8 @@ export class ConnectService {
       console.log('Token saved');
     }
   }
+
+  //---------------------------- Login ------------------------------------------
   async getPostDirect(login: any): Promise<any> {
     //función que recibe el username y password del usuario y lo envía al backend para iniciar sesión
     try {
@@ -54,6 +56,7 @@ export class ConnectService {
       return undefined;
     }
   }
+  //---------------------------- Registro ------------------------------------------
   async register(user: any): Promise<any> {
     //función que recibe el nombre, username, email y password del usuario y lo envía al backend para registrar al usuario
     try {
@@ -70,6 +73,7 @@ export class ConnectService {
     }
   }
 
+  //---------------------------- Recuperar Contraseña por Email ------------------------------------------
   async getEmail(verifyEmail: any): Promise<any> {
     //esta función será la que obtenga el email del usuario desde el backend y compruebe si ya existe.
     // En el caso de que exista envía un código de 6 dígitos. (Es para recuperar la contraseña)
@@ -82,6 +86,7 @@ export class ConnectService {
       return undefined;
     }
   }
+  //---------------------------- Envío de código ------------------------------------------
   async getCode(checkCode: any): Promise<any> {
     //Esta función recibe el email para que lo compare con el código asignado
     try {
@@ -92,6 +97,7 @@ export class ConnectService {
       return undefined;
     }
   }
+  //---------------------------- Resetear Contraseña ------------------------------------------
   async resetPassword(resetPassword: any): Promise<any> {
     //función que recibe el email y la contraseña nueva y la envía al backend para resetear la contraseña
     try {
