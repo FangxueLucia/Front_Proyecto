@@ -1,31 +1,52 @@
-<p>Login</p>
-<form (ngSubmit)="onSubmit()">
-  <div class="mb-3">
-    <label for="username" class="form-label">Nombre de usuario</label>
-    <input
-      type="text"
-      class="form-control"
-      id="username"
-      name="username"
-      [ngModel]="username()"
-      (ngModelChange)="usernameChange($event)"
-    />
-  </div>
-  <div class="mb-3">
-    <label for="password" class="form-label">Contraseña</label>
-    <input
-      type="password"
-      class="form-control"
-      id="password"
-      name="password"
-      [ngModel]="password()"
-      (ngModelChange)="passwordChange($event)"
-    />
-    <div *ngIf="loginError()" class="alert alert-danger mt-2" role="alert" style="font-size: 0.9em">
-      Contraseña errónea. Por favor, revisa tus credenciales.
+<div class="login-page">
+  <div class="login-card">
+    <div class="card-header-custom">
+      <h3>Eon 30</h3>
+      <p class="text-muted">Bienvenido de nuevo</p>
     </div>
+
+    <form (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="username" class="form-label">Nombre de usuario</label>
+        <div class="input-group">
+          <input
+            type="text"
+            class="form-control custom-input"
+            id="username"
+            name="username"
+            placeholder="Introduce tu usuario"
+            [ngModel]="username()"
+            (ngModelChange)="usernameChange($event)"
+          />
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Contraseña</label>
+        <input
+          type="password"
+          class="form-control custom-input"
+          id="password"
+          name="password"
+          placeholder="••••••••"
+          [ngModel]="password()"
+          (ngModelChange)="passwordChange($event)"
+        />
+
+        <div *ngIf="loginError()" class="alert alert-danger mt-3 fade show" role="alert">
+          <i class="bi bi-exclamation-triangle-fill me-2"></i>
+          Contraseña errónea. Por favor, revisa tus credenciales.
+        </div>
+      </div>
+
+      <div class="d-grid gap-2 mt-4">
+        <button type="submit" class="btn btn-primary custom-btn">Iniciar sesión</button>
+      </div>
+
+      <div class="text-center mt-3">
+        <a href="/retrievePassword" class="forgot-password">¿Olvidaste tu contraseña?</a>
+      </div>
+    </form>
   </div>
-  <button type="submit" class="btn btn-primary">Iniciar sesión</button>
-  <a href="/retrievePassword">Recuperar contraseña</a>
-</form>
+</div>
 <router-outlet></router-outlet>
