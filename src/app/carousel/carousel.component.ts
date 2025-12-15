@@ -22,11 +22,11 @@ export class CarouselComponent {
   // ------------- CONTROLADOR DE SLIDE -------------
   nextSlide() {
     this.currentImageIndex = (this.currentImageIndex + 1) % this.images.length;
-    // this.restartSlideInterval(); //para poder reiniciar el temporizador al interactuar manualmente
+    this.restartSlideInterval(); //para poder reiniciar el temporizador al interactuar manualmente
   }
   prevSlide() {
     this.currentImageIndex = (this.currentImageIndex - 1 + this.images.length) % this.images.length;
-    // this.restartSlideInterval(); //para poder reiniciar el temporizador al interactuar manualmente
+    this.restartSlideInterval(); //para poder reiniciar el temporizador al interactuar manualmente
   }
 
   // ------------- AUTO SLIDE -------------
