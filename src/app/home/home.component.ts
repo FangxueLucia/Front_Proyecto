@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CarouselComponent } from '../carousel/carousel.component';
+import { CarouselComponent, CarouselItem } from '../carousel/carousel.component'; // <-- Importa la interfaz
 
 @Component({
   selector: 'app-home',
@@ -8,10 +8,38 @@ import { CarouselComponent } from '../carousel/carousel.component';
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
-  imageUrls: string[] = [
-    'https://www.humaneworld.org/sites/default/files/styles/sa_social_media_facebook/public/2022-07/kitten-playing-575035.jpg?h=b1b36da8&itok=0HJldiWn',
-    'https://www.floppycats.com/wp-content/uploads/2023/08/tricolor-kitten-is-playing-on-a-white-background-in-front-of-the-camera-1.jpg',
-    'https://img.freepik.com/premium-photo/kitten-white-background_78621-487.jpg',
+  // Ahora el array debe ser de tipo CarouselItem[] con los detalles de cada slide
+  imageUrls: CarouselItem[] = [
+    {
+      src: 'https://content-historia.nationalgeographic.com.es/medio/2022/10/07/bisontes-de-color-pintados-en-las-paredes-de-la-cueva-de-altamira_f4efc53e_1200x630.jpeg',
+      title: 'Pinturas Rupestres de Altamira',
+      description: 'Paleolítico. Cueva de Altamira, Santillana del Mar.',
+    },
+    {
+      src: 'https://content-historia.nationalgeographic.com.es/medio/2024/05/02/fusilamientos_81c82b04_240502155817_1200x630.jpg',
+      title: 'Los Fusilamientos del 3 de Mayo',
+      description: 'Francisco de Goya y Lucientes, 1814. Museo del Prado, Madrid.',
+    },
+    {
+      src: 'https://es.normandie-tourisme.fr/wp-content/uploads/sites/7/2022/05/claude-monet-Impression-soleil-levant-1872-Musee-Marmottan-Monet-Paris-%C2%A9-SLB-Christian-Baraja-1200x914-1.jpeg',
+      title: 'Impresión: Sol Naciente',
+      description: 'Claude Monet, 1872. Museo Marmottan, París.',
+    },
+    {
+      src: 'https://recursos.museoreinasofia.es/styles/large_landscape/public/Obra/DE00050_2.jpg.webp',
+      title: 'El Guernica',
+      description: 'Pablo Picasso, 1937. Museo Reina Sofía, Madrid.',
+    },
+    {
+      src: 'https://www.singulart.com/blog/wp-content/uploads/2023/10/Untitled-Film-Stills.jpg',
+      title: 'Untitled Film Stills',
+      description: 'Cindy Sherman, 1977-1980. MoMA, Nueva York.',
+    },
+    {
+      src: 'https://images.euronews.com/articles/stories/07/18/81/96/1536x864_cmsv2_2d3120d5-0e42-506c-a194-6d986d6bc7be-7188196.jpg',
+      title: 'Unsupervised Machine Hallucinations',
+      description: 'Refik Anadol, 2022. MoMA, Nueva York.',
+    },
   ];
 
   ngOnInit(): void {}
