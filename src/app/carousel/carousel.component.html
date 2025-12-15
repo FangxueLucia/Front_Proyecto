@@ -17,14 +17,10 @@
 
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img
-        src="https://www.humaneworld.org/sites/default/files/styles/sa_social_media_facebook/public/2022-07/kitten-playing-575035.jpg?h=b1b36da8&itok=0HJldiWn"
-        class="d-block w-100"
-        alt="..."
-      />
+      <img src="{{ images[currentImageIndex].src }}" class="d-block w-100" alt="..." />
       <div class="carousel-caption d-none d-md-block">
-        <h5>{{ item.title }}</h5>
-        <p>{{ item.description }}</p>
+        <h5>{{ images[currentImageIndex].title }}</h5>
+        <p>{{ images[currentImageIndex].description }}</p>
       </div>
     </div>
   </div>

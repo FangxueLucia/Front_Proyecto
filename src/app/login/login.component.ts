@@ -37,7 +37,7 @@ export class LoginComponent {
     try {
       const response = await this.connectService.getPostDirect(login); //se llama al servicio para iniciar sesión
       if (response) {
-        this.router.navigate(['/home']); //si  la contraseña está bien se redirige a la página de inicio
+        this.router.navigate(['/']); //si  la contraseña está bien se redirige a la página de inicio
       } else {
         this.loginError.set(true); //si la contraseña no está bien se muestra un mensaje de error
       }
