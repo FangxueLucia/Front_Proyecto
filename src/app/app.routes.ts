@@ -9,9 +9,9 @@ import { RessetPasswordComponent } from './resset-password/resset-password.compo
 import { ConfirmedNewPasswordComponent } from './confirmed-new-password/confirmed-new-password.component';
 import { BlogComponent } from './blog/blog.component';
 import { StoreComponent } from './store/store.component';
-import { ArteAntiguoComponent } from './arte-antiguo/arte-antiguo.component';
-import { OldMastersComponent } from './old-masters/old-masters.component';
+import { ArteHastaSXIXComponent } from './arte-hasta-s-xix/arte-hasta-s-xix.component';
 import { ArteContemporaneoComponent } from './arte-contemporaneo/arte-contemporaneo.component';
+import { VanguardiasComponent } from './vanguardias/vanguardias.component';
 
 export const routes: Routes = [
   {
@@ -30,12 +30,12 @@ export const routes: Routes = [
   },
   // ------------------------ Rutas de Arte ------------------------
   {
-    path: 'arte-antiguo',
-    component: ArteAntiguoComponent,
+    path: 'arte-hasta-s-xix',
+    component: ArteHastaSXIXComponent,
   },
   {
-    path: 'old-masters',
-    component: OldMastersComponent,
+    path: 'vanguardias',
+    component: VanguardiasComponent,
   },
   {
     path: 'arte-contemporaneo',
