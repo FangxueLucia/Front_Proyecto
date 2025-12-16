@@ -1,0 +1,23 @@
+.obra-card {
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.obra-img {
+  height: 160px;
+  background: linear-gradient(135deg, rgba(0,0,0,.06), rgba(0,0,0,.02));
+}
+
+.obra-titulo {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* 2 líneas máximo */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2.6em;
+}
+
+.obra-artista {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

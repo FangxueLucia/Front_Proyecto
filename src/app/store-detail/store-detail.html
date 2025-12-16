@@ -1,0 +1,43 @@
+<div class="container py-4">
+  <a class="btn btn-link p-0 mb-3" routerLink="/store">← Volver</a>
+
+  <h2 class="mb-3">Detalle</h2>
+
+  <!-- Loading -->
+  <div *ngIf="loading" class="d-flex align-items-center gap-2">
+    <div class="spinner-border" role="status" aria-label="Cargando"></div>
+    <span>Cargando obra...</span>
+  </div>
+
+  <!-- Error -->
+  <div *ngIf="errorMsg" class="alert alert-danger mt-3">
+    {{ errorMsg }}
+  </div>
+
+  <!-- Detalle -->
+  <div *ngIf="!loading && !errorMsg && obra" class="card shadow-sm">
+    <div class="card-body">
+      <span class="badge text-bg-dark mb-2">{{ obra.tipo }}</span>
+
+      <h3 class="card-title">{{ obra.titulo }}</h3>
+
+      <p class="text-muted mb-2">
+        {{ obra.artista?.nombre || 'Artista desconocido' }}
+      </p>
+
+      <ul class="list-group list-group-flush my-3">
+        <li class="list-group-item"><strong>Año:</strong> {{ obra.anio }}</li>
+        <li class="list-group-item"><strong>Precio:</strong> {{ obra.precio || 0 }} €</li>
+        <li class="list-group-item">
+          <strong>Estado:</strong>
+          <span
+            class="badge ms-2"
+            [ngClass]="obra.disponible ? 'text-bg-success' : 'text-bg-secondary'"
+          >
+            {{ obra.disponible ? 'Disponible' : 'No disponible' }}
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

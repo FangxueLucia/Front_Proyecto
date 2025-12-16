@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-lg custom-navbar">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Eon 30 Gallery</a>
+    <a class="navbar-brand" routerLink="/">Eon 30 Gallery</a>
+
     <button
       class="navbar-toggler"
       type="button"
@@ -12,14 +13,17 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="/blog">Blog</a>
+          <a class="nav-link" routerLink="/blog" routerLinkActive="active">Blog</a>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link" href="/store">Store</a>
+          <a class="nav-link" routerLink="/store" routerLinkActive="active">Store</a>
         </li>
+
         <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
@@ -31,28 +35,31 @@
             Explora
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/arte-antiguo">Arte hasta el siglo XIX</a></li>
+            <li>
+              <a class="dropdown-item" routerLink="/arte-hasta-s-xix">Arte hasta el siglo XIX</a>
+            </li>
             <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item" href="/old-masters">Vanguardias</a></li>
+            <li>
+              <a class="dropdown-item" routerLink="/vanguardias">Vanguardias</a>
+            </li>
             <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item" href="/arte-contemporaneo">Arte Contemporáneo</a></li>
+            <li>
+              <a class="dropdown-item" routerLink="/arte-contemporaneo">Arte Contemporáneo</a>
+            </li>
           </ul>
         </li>
       </ul>
+
       <form class="d-flex" role="search">
-        <input
-          class="form-control me-2"
-          type="search"
-          placeholder="Buscar arte..."
-          aria-label="Search"
-        />
+        <input class="form-control me-2" type="search" placeholder="Buscar arte..." />
         <button class="btn btn-outline-custom" type="submit">Buscar</button>
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <ul class="navbar-nav ms-3 mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="/login">Login</a>
+            <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/register">Register</a>
+            <a class="nav-link" routerLink="/register" routerLinkActive="active">Register</a>
           </li>
         </ul>
       </form>
