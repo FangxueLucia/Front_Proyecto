@@ -1,1 +1,44 @@
-<p>arte-contemporaneo works!</p>
+<h2>ARTE CONTEMPORANEO</h2>
+
+@if (isLoading()) {
+    <p>Cargando obras de arte contemporáneo...</p>
+}
+
+@if (!isLoading() && obras2().length > 0) {
+    <div class="container-obras">
+        @for (obra of obras2(); track obra.tittle) {
+        <div class="obra">
+          <span>{{ obra.tittle }}</span>
+          <span>{{ obra.artist }} ({{ obra.year }})</span>
+          <img src="http://localhost:3000/{{obra.image}}" alt="">
+      <p>{{ obra.description }}</p>
+
+  <button class="btn-ver-mas" (click)="abrirModal(obra)">
+  Ver más
+</button>
+        </div>
+      }
+    </div>
+} @else if (!isLoading() && obras2().length === 0) {
+    <p>No se encontraron obras de arte contemporáneo.</p>
+}
+@if (mostrarModal && obraSeleccionada) {
+  <div class="modal-fondo" (click)="cerrarModal()">
+
+    <div class="modal-tarjeta" (click)="$event.stopPropagation()">
+
+      <h3>{{ obraSeleccionada.tittle }}</h3>
+      <span>{{ obraSeleccionada.artist }} ({{ obraSeleccionada.year }})</span>
+
+      <img
+        src="http://localhost:3000/{{ obraSeleccionada.image }}"
+        alt=""
+      />
+
+      <p>{{ obraSeleccionada.bibliografia }}</p>
+
+      <button class="btn-cerrar" (click)="cerrarModal()">Cerrar</button>
+    </div>
+
+  </div>
+}
