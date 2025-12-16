@@ -24,7 +24,7 @@ export interface CarouselItem {
 export class CarouselComponent implements OnInit, OnDestroy, OnChanges {
   //para definir que este componente va a tener imagenes necesita un array al que le voy a llamar 'images'.
   @Input() images: CarouselItem[] = []; //datos que recibe del componente padre (home.component.ts)
-  @Input() interval: number = 3000; //intervalo de 3 segundos entre cada imagen
+  @Input() interval: number = 5000; //intervalo de 5 segundos entre cada imagen
   currentImageIndex: number = 0;
   private slideInterval: any; //variable que guarda la referencia del intervalo
   constructor(private cdr: ChangeDetectorRef) {}
@@ -70,9 +70,10 @@ export class CarouselComponent implements OnInit, OnDestroy, OnChanges {
   startAutoSlide(): void {
     this.stopAutoSlide();
     this.slideInterval = setInterval(() => {
-      this.nextSlide();
-      this.cdr.detectChanges(); // Force view update
-    }, this.interval);
+      //inicia el bucle de slides
+      this.nextSlide(); //avanza al siguiente slide
+      this.cdr.detectChanges(); // Se asegura de que Angular detecte los cambios y actualice la vista
+    }, this.interval); //corresponde al intervalo de tiempo entre cada slide (5 segundos)
   }
 
   stopAutoSlide(): void {

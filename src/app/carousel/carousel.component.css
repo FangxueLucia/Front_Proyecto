@@ -75,18 +75,18 @@
 .carousel-control-prev:hover,
 .carousel-control-next:hover {
   opacity: 1;
-  background: rgba(20, 33, 61, 0.2); /* Subtle Oxford Blue tint */
+  background: rgba(20, 33, 61, 0.2); 
 }
 
 .carousel-control-prev:hover .carousel-control-prev-icon,
 .carousel-control-next:hover .carousel-control-next-icon {
-  filter: drop-shadow(0px 0px 5px #fca311); /* Orange glow on hover */
+  filter: drop-shadow(0px 0px 5px #fca311); 
 }
 
 
-/* Caption Styling (Glassmorphism) */
+/* Caption Styling */
 .carousel-caption {
-  background: rgba(20, 33, 61, 0.75); /* Oxford Blue with transparency */
+  background: rgba(20, 33, 61, 0.75); 
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   padding: 1.5rem;
@@ -99,8 +99,8 @@
 }
 
 .carousel-caption h5 {
-  color: #ffffff; /* White */
-  font-family: 'Outfit', sans-serif; /* Assuming font availability, or fallback */
+  color: #ffffff; 
+  font-family: 'Outfit', sans-serif; 
   font-weight: 700;
   font-size: 2rem;
   margin-bottom: 0.5rem;
@@ -109,7 +109,7 @@
 }
 
 .carousel-caption p {
-  color: #e5e5e5; /* Platinum */
+  color: #e5e5e5; 
   font-size: 1.1rem;
   font-weight: 300;
   margin-bottom: 0;
