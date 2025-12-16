@@ -1,0 +1,12 @@
+<div>
+  <h2>Explora las obras de arte que no te puedes perder</h2>
+  <div class="card-container">
+    <div class="card" *ngFor="let card of cards">
+      <a [routerLink]="card.ruta">
+        <img [src]="card.imagenUrl" [alt]="card.titulo" />
+        <h3>{{ card.titulo }}</h3>
+        <p>{{ card.descripcion }}</p>
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,12 @@
-import { Component, Input, OnInit, OnDestroy, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  OnDestroy,
+  OnChanges,
+  SimpleChanges,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 export interface CarouselItem {
@@ -19,7 +27,7 @@ export class CarouselComponent implements OnInit, OnDestroy, OnChanges {
   @Input() interval: number = 3000; //intervalo de 3 segundos entre cada imagen
   currentImageIndex: number = 0;
   private slideInterval: any; //variable que guarda la referencia del intervalo
-  constructor() {}
+  constructor(private cdr: ChangeDetectorRef) {}
   ngOnInit(): void {
     if (this.images.length > 1) {
       this.startAutoSlide();
@@ -40,21 +48,41 @@ export class CarouselComponent implements OnInit, OnDestroy, OnChanges {
   // ------------- CONTROLADOR DE SLIDE -------------
   nextSlide() {
     this.currentImageIndex = (this.currentImageIndex + 1) % this.images.length;
-    this.restartSlideInterval(); //para poder reiniciar el temporizador al interactuar manualmente
+    // No reiniciamos el intervalo aquí si es llamado por el intervalo mismo.
+    // Pero si es llamado por el botón, deberíamos.
+    // Para simplificar, asumiremos que si el usuario interactúa, reiniciamos desde el HTML llamando a una función wrapper o modificaremos esto.
+    // Mejor estrategia: nextSlide solo mueve. startAutoSlide sigue corriendo.
+    // Si el usuario toca, llamamos a resetTimer().
   }
-  prevSlide() {
+
+  // Métodos para botones (interacción manual)
+  manualNext() {
+    this.nextSlide();
+    this.restartSlideInterval();
+  }
+
+  manualPrev() {
     this.currentImageIndex = (this.currentImageIndex - 1 + this.images.length) % this.images.length;
-    this.restartSlideInterval(); //para poder reiniciar el temporizador al interactuar manualmente
+    this.restartSlideInterval();
   }
 
   // ------------- AUTO SLIDE -------------
   startAutoSlide(): void {
+    this.stopAutoSlide();
+    this.slideInterval = setInterval(() => {
+      this.nextSlide();
+      this.cdr.detectChanges(); // Force view update
+    }, this.interval);
+  }
+
+  stopAutoSlide(): void {
     if (this.slideInterval) {
       clearInterval(this.slideInterval);
     }
-    this.slideInterval = setInterval(() => this.nextSlide(), this.interval);
   }
+
   restartSlideInterval(): void {
+    this.stopAutoSlide();
     this.startAutoSlide();
   }
 

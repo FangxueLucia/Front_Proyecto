@@ -1,13 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { CarouselComponent, CarouselItem } from '../carousel/carousel.component'; // <-- Importa la interfaz
+import { FooterComponent } from '../footer/footer.component';
+import { BodyLandingpageComponent } from '../body-landingpage/body-landingpage.component';
 
+interface Cards {
+  titulo: string;
+  descripcion: string;
+  imagenUrl: string;
+  ruta: string;
+}
 @Component({
   selector: 'app-home',
-  imports: [CarouselComponent],
+  imports: [CarouselComponent, FooterComponent, BodyLandingpageComponent, RouterModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
+  // ------------------------- CAROUSEL -------------------------
   // Ahora el array debe ser de tipo CarouselItem[] con los detalles de cada slide
   imageUrls: CarouselItem[] = [
     {
@@ -39,6 +49,27 @@ export class HomeComponent implements OnInit {
       src: 'https://images.euronews.com/articles/stories/07/18/81/96/1536x864_cmsv2_2d3120d5-0e42-506c-a194-6d986d6bc7be-7188196.jpg',
       title: 'Unsupervised Machine Hallucinations',
       description: 'Refik Anadol, 2022. MoMA, Nueva York.',
+    },
+  ];
+  // ------------------------- CARDS -------------------------
+  cards: Cards[] = [
+    {
+      imagenUrl: '',
+      titulo: 'Arte Hasta el siglo XIX',
+      descripcion: 'Descubre la riqueza del arte desde la antigüedad hasta el siglo XIX.',
+      ruta: '/arte-hasta-s-xix',
+    },
+    {
+      imagenUrl: '',
+      titulo: 'Vanguardias',
+      descripcion: 'Investiga las principales tendencias artísticas del siglo XX.',
+      ruta: '/vanguardias',
+    },
+    {
+      imagenUrl: '',
+      titulo: 'Arte Contemporáneo',
+      descripcion: 'Sumergete en la riqueza del arte contemporáneo.',
+      ruta: '/arte-contemporaneo',
     },
   ];
 

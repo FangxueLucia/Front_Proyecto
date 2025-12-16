@@ -3,22 +3,46 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   border-radius: 8px; /* Optional: adds subtle rounded corners */
   overflow: hidden;
+  position: relative;
+}
+
+/* Enable stacking for transition */
+.carousel-inner {
+  display: grid;
+  width: 100%;
+}
+
+.carousel-item {
+  grid-area: 1 / 1;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  display: block !important; /* Override bootstrap's display: none */
+  z-index: 0;
+}
+
+.carousel-item.active {
+  opacity: 1;
+  z-index: 1;
 }
 
 /* Indicators (Dots) */
+.carousel-indicators {
+  z-index: 2; /* Ensure above images */
+}
+
 .carousel-indicators button {
   width: 12px;
   height: 12px;
   border-radius: 50%;
   border: 2px solid transparent;
-  background-color: #e5e5e5; /* Platinum */
+  background-color: #e5e5e5; 
   opacity: 0.5;
   transition: all 0.3s ease;
   margin: 0 6px;
 }
 
 .carousel-indicators button.active {
-  background-color: #fca311; /* Orange Web */
+  background-color: #fca311; 
   transform: scale(1.2);
   opacity: 1;
   box-shadow: 0 0 10px rgba(252, 163, 17, 0.6);
@@ -30,19 +54,22 @@
 }
 
 /* Navigation Arrows */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 5%;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+  z-index: 2; /* Ensure above images */
+  background: none;
+  border: none;
+}
+
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
   filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.5));
   width: 3rem;
   height: 3rem;
   background-size: 100%, 100%;
-}
-
-.carousel-control-prev,
-.carousel-control-next {
-  width: 5%;
-  opacity: 0.7;
-  transition: all 0.3s ease;
 }
 
 .carousel-control-prev:hover,
@@ -93,14 +120,10 @@
   object-fit: cover;
   object-position: center;
   height: 75vh; /* Takes 75% of the viewport height */
+  width: 100%;
   filter: brightness(0.9); /* Slightly dim image to pop text */
-  transition: transform 10s ease; /* Subtle zoom effect for 'alive' feel (optional) */
+  /* transition: transform 10s ease; Remove zoom if distracting, or keep */
 }
-
-/* Optional: Slight zoom animation on active slide image */
-/* To make this work smoothly, we'd need to target the active item specifically, 
-   but standard bootstrap creates/destroys elements effectively or swaps classes. 
-   A simple hover effect on the container can look nice too. */
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -126,4 +149,3 @@
     line-height: 1.2;
   }
 }
-

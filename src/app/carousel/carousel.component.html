@@ -16,20 +16,24 @@
   </div>
 
   <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="{{ images[currentImageIndex].src }}" class="d-block w-100" alt="..." />
+    <div
+      class="carousel-item"
+      *ngFor="let image of images; let i = index"
+      [class.active]="i === currentImageIndex"
+    >
+      <img [src]="image.src" class="d-block w-100" [alt]="image.title" />
       <div class="carousel-caption d-none d-md-block">
-        <h5>{{ images[currentImageIndex].title }}</h5>
-        <p>{{ images[currentImageIndex].description }}</p>
+        <h5>{{ image.title }}</h5>
+        <p>{{ image.description }}</p>
       </div>
     </div>
   </div>
 
-  <button class="carousel-control-prev" type="button" (click)="prevSlide()">
+  <button class="carousel-control-prev" type="button" (click)="manualPrev()">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
   </button>
-  <button class="carousel-control-next" type="button" (click)="nextSlide()">
+  <button class="carousel-control-next" type="button" (click)="manualNext()">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
