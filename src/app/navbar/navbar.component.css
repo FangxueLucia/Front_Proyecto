@@ -1,7 +1,7 @@
 /* Navbar Custom Styles */
 .custom-navbar {
   background-color: #14213D !important; /* Dark Blue */
-  padding: 1rem 2rem;
+  padding: 1rem 2rem; /* Restauramos el padding original ya que no hay sidebar */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -87,4 +87,38 @@
 .btn-outline-custom:hover {
   background-color: #FCA311;
   color: #14213D;
+}
+
+/* Estilos para la imagen de perfil en el navbar */
+.profile-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%; /* Hace la imagen redonda */
+  object-fit: cover;  /* Asegura que la imagen no se deforme */
+  border: 2px solid #FCA311; /* Borde naranja */
+}
+
+.profile-menu .dropdown-menu {
+  background-color: #14213D;
+  border: 1px solid #FCA311;
+  margin-top: 0.5rem;
+}
+
+.profile-menu .dropdown-item {
+  color: #E5E5E5;
+}
+
+.profile-menu .dropdown-item:hover {
+  background-color: #FCA311;
+  color: #14213D;
+}
+
+.profile-menu .dropdown-item-text {
+  color: #E5E5E5;
+  padding: 0.25rem 1rem;
+}
+
+.profile-menu .text-muted {
+  color: #adb5bd !important; /* Lighter gray for better contrast on dark bg */
+  font-size: 0.875rem;
 }
