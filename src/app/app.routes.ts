@@ -41,6 +41,12 @@ export const routes: Routes = [
     path: 'arte-contemporaneo',
     component: ArteContemporaneoComponent,
   },
+
+  // ------------------------ Rutas del blog ------------------------
+  {
+    path: '',
+    component: BlogComponent,
+  },
   // ------------------------ Rutas de autenticación ------------------------
   {
     path: 'login',

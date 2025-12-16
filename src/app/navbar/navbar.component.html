@@ -72,14 +72,6 @@
               <span>{{ user.username }}</span>
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
-              <!-- Información del usuario -->
-              <li>
-                <span class="dropdown-item-text fw-bold">{{ user.name }}</span>
-              </li>
-              <li>
-                <span class="dropdown-item-text text-muted">@{{ user.username }}</span>
-              </li>
-              <li><hr class="dropdown-divider" /></li>
               <!-- Opción para cerrar sesión -->
               <li><a class="dropdown-item" href="#" (click)="logout()">Cerrar Sesión</a></li>
             </ul>
