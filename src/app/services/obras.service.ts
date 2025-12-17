@@ -48,7 +48,7 @@ export class ObrasService {
 
   // Colecciones 1 / 2 / 3
   getObrasColeccion(n: 1 | 2 | 3): Observable<ObrasResponse> {
-    return this.http.get<ObrasResponse>(`${this.apiUrl}/coleccion/${n}`);
+    return this.http.get<ObrasResponse>(`${this.apiUrl}${n}`);
   }
 
   // Alias para compatibilidad
