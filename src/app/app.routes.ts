@@ -12,6 +12,8 @@ import { StoreComponent } from './store/store.component';
 import { ArteHastaSXIXComponent } from './arte-hasta-s-xix/arte-hasta-s-xix.component';
 import { ArteContemporaneoComponent } from './arte-contemporaneo/arte-contemporaneo.component';
 import { VanguardiasComponent } from './vanguardias/vanguardias.component';
+import { NewBlogEntryComponent } from './new-blog-entry/new-blog-entry.component';
+import { BlogContentComponent } from './blog-content/blog-content.component';
 
 export const routes: Routes = [
   {
@@ -46,6 +48,14 @@ export const routes: Routes = [
   {
     path: '',
     component: BlogComponent,
+  },
+  {
+    path: 'blog/:id',
+    component: BlogContentComponent,
+  },
+  {
+    path: 'new-blog-entry',
+    component: NewBlogEntryComponent,
   },
   // ------------------------ Rutas de autenticación ------------------------
   {

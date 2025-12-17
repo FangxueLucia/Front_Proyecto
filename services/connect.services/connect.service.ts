@@ -12,7 +12,10 @@ instance.interceptors.request.use(
 
     if (token) {
       // si existe el token, lo añade al encabezado 'Authorization'
+      console.log('Using token for request:', token.substring(0, 10) + '...');
       config.headers.Authorization = `Bearer ${token}`;
+    } else {
+      console.warn('No token found in localStorage!');
     }
     return config;
   },
@@ -32,6 +35,10 @@ export class ConnectService {
       console.log('Token saved');
     }
   }
+
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token');
+  } // comprueba si existe un token en localStorage y si no existe hará que el boton de la añadir entrada al blog desaparezca
 
   //---------------------------- Login ------------------------------------------
   async getPostDirect(login: any): Promise<any> {
@@ -112,6 +119,42 @@ export class ConnectService {
       return response.data;
     } catch (error) {
       console.error('Error resetting password:', error);
+      return undefined;
+    }
+  }
+
+  //------------ LO DEL BLOG (NO QUIERO CREAR OTRA DEPENDENCIA, ME DA PEREZA LOSIENTO) --------------------------
+  //---------------------------- Ver los blogs ya creados ------------------------------------------
+  async getBlogs(): Promise<any> {
+    try {
+      const response: AxiosResponse = await instance.get('blog');
+      return response.data;
+    } catch (error) {
+      console.error('Error getting blogs:', error);
+      return undefined;
+    }
+  }
+
+  //---------------------------- Ver en detalle una entrada en el Blog ------------------------------------------
+
+  async getBlogDetail(id: string): Promise<any> {
+    try {
+      const response: AxiosResponse = await instance.get(`blog/${id}`);
+      return response.data;
+    } catch (error) {
+      console.error('Error getting blog detail:', error);
+      return undefined;
+    }
+  }
+  //---------------------------- Crear Entrada en el Blog ------------------------------------------
+  async newBlogEntry(blog: any): Promise<any> {
+    try {
+      console.log('processing new entry');
+      const response: AxiosResponse = await instance.post('blog', blog);
+      console.log('new entry response received');
+      return response.data;
+    } catch (error) {
+      console.error('Error creating new entry:', error);
       return undefined;
     }
   }
