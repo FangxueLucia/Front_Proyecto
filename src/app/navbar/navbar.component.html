@@ -37,9 +37,7 @@
 
           <ul class="dropdown-menu">
             <li>
-              <a class="dropdown-item" routerLink="/arte-hasta-s-xix"
-                >Arte hasta el siglo XIX</a
-              >
+              <a class="dropdown-item" routerLink="/arte-hasta-s-xix">Arte hasta el siglo XIX</a>
             </li>
             <li><hr class="dropdown-divider" /></li>
             <li>
@@ -47,9 +45,7 @@
             </li>
             <li><hr class="dropdown-divider" /></li>
             <li>
-              <a class="dropdown-item" routerLink="/arte-contemporaneo"
-                >Arte Contemporáneo</a
-              >
+              <a class="dropdown-item" routerLink="/arte-contemporaneo">Arte Contemporáneo</a>
             </li>
           </ul>
         </li>
@@ -100,11 +96,7 @@
               aria-expanded="false"
             >
               <!-- Imagen de perfil del usuario -->
-              <img
-                [src]="user.image"
-                [alt]="user.username"
-                class="profile-img"
-              />
+              <img [src]="user.image" [alt]="user.username" class="profile-img" />
               <!-- Nombre del usuario -->
               <span>{{ user.username }}</span>
             </a>
@@ -115,16 +107,12 @@
                 <span class="dropdown-item-text fw-bold">{{ user.name }}</span>
               </li>
               <li>
-                <span class="dropdown-item-text text-muted"
-                  >@{{ user.username }}</span
-                >
+                <span class="dropdown-item-text text-muted">@{{ user.username }}</span>
               </li>
               <li><hr class="dropdown-divider" /></li>
               <!-- Opción para cerrar sesión -->
               <li>
-                <a class="dropdown-item" href="#" (click)="logout()"
-                  >Cerrar Sesión</a
-                >
+                <a class="dropdown-item" href="#" (click)="logout()">Cerrar Sesión</a>
               </li>
             </ul>
           </li>

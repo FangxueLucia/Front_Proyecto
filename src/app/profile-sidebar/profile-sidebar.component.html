@@ -7,7 +7,7 @@
 >
   <div class="user-info">
     <img [src]="user.image" [alt]="user.username" />
-    <span *ngIf="isExpanded">{{ user.name }}</span>
-    <span *ngIf="!isExpanded"> Bienvenid@ {{ user.username }}</span>
+    <span *ngIf="isExpanded">Bienvenid@ {{ user.username }}</span>
+    <span *ngIf="!isExpanded">{{ user.username }}</span>
   </div>
 </div>

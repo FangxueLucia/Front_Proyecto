@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="blog-detail-card">
+    <!-- Título -->
+    <h3>{{ title() }}</h3>
+
+    <!-- Imagen Centrada -->
+    @if (imageUrl()) {
+    <div class="image-container">
+      <img [src]="imageUrl()" [alt]="title()" />
+    </div>
+    }
+
+    <!-- Contenido del Post -->
+    <div class="content-text">
+      {{ description() }}
+    </div>
+
+    <!-- Información Meta (Footer de la tarjeta) -->
+    <div class="meta-info">
+      <div class="meta-item"><span>👤</span> <strong>Autor:</strong> {{ username() }}</div>
+      <div class="meta-item"><span>📅</span> <strong>Fecha:</strong> {{ date() }}</div>
+      <div class="meta-item"><span>❤️</span> <strong>Likes:</strong> {{ likes() }}</div>
+    </div>
+  </div>
+</div>
