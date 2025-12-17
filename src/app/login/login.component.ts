@@ -43,11 +43,10 @@ export class LoginComponent {
       const response = await this.connectService.getPostDirect(login); //se llama al servicio para iniciar sesión
       if (response) {
         const userData = {
-          //almacena en un objero los datos del usuario
-          name: this.username(), //es el valor que el usuario ingresa en el formulario
-          username: this.username(), //es el valor que el usuario ingresa en el formulario
+          name: this.username(),
+          username: this.username(),
           image:
-            response.profilePicture || //obtiene la imagen de perfil del usuario. Si no hay, se pone la url de la imagen del gatito
+            response.profilePicture ||
             'https://cdn.pixabay.com/photo/2016/03/28/10/05/kitten-1285341_640.jpg',
         };
         this.authService.login(userData);
@@ -57,7 +56,23 @@ export class LoginComponent {
       }
     } catch (error) {
       console.error('Error logging in:', error);
-      this.loginError.set(true);
+      // this.loginError.set(true); //se muestra un mensaje de error
+
+      // --------------------------------------------------------------------------------
+      // MOCK LOGIN IMPLEMENTATION (PARA PRUEBAS SIN EL BACKEND)
+      // --------------------------------------------------------------------------------
+      // Si el backend está caído, se simula un inicio de sesión exitoso para que se pueda ver el sidebar.
+      console.warn('Backend not running? Activating MOCK LOGIN for testing.');
+
+      const mockUser = {
+        name: this.username() || 'Test User',
+        username: this.username() || 'testuser',
+        image: 'https://cdn.pixabay.com/photo/2016/03/28/10/05/kitten-1285341_640.jpg',
+      };
+
+      this.authService.login(mockUser);
+      this.router.navigate(['/']);
+      // --------------------------------------------------------------------------------
     }
   }
 }

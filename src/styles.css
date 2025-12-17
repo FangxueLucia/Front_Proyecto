@@ -2,6 +2,12 @@
 
 /* Art Palette: #000000, #14213D, #FCA311, #E5E5E5, #FFFFFF */
 
+body {
+  background-color: #E5E5E5; /* Light Gray Global Background */
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .login-page {
   display: flex;
   justify-content: center;
@@ -19,6 +25,16 @@
   width: 100%;
   max-width: 400px;
   border-top: 5px solid #FCA311; /* Orange accent top border */
+}
+
+.blog-card {
+  background-color: #FFFFFF; /* White Card */
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 800px; /* Wider for blog entries */
+  border-top: 5px solid #FCA311;
 }
 
 .card-header-custom {
