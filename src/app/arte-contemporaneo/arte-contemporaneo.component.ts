@@ -28,7 +28,7 @@ export class ArteContemporaneoComponent implements OnInit {
   }
 
   // Declarar obras2 como una señal que contiene un array
-  obras2 = signal<any[]>([]);
+  obras3 = signal<any[]>([]);
   
   // Declarar isLoading como una señal, inicializada en true
   isLoading = signal(true); 
@@ -36,10 +36,10 @@ export class ArteContemporaneoComponent implements OnInit {
   constructor(private obrasService: ObrasService) {}
 
   ngOnInit(): void {
-    this.obrasService.getObras2().subscribe({
+    this.obrasService.getObras3().subscribe({
       next: (res) => {
-        this.obras2.set(res.results);
-        console.log('RESPUESTA BACKEND OBRAS2:', res);
+        this.obras3.set(res.results);
+        console.log('RESPUESTA BACKEND OBRAS3:', res);
       },
       error: (err) => {
         console.error('Error al cargar obras:', err);
