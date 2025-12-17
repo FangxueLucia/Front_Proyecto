@@ -4,16 +4,13 @@ import { CommonModule } from '@angular/common';
 import { ObrasService } from '../services/obras.service';
 
 @Component({
-  selector: 'app-vanguardias',
-  standalone: true,
-  // Ya no necesitas CommonModule para @for y @if si estás en v17+,
-  // pero lo dejamos por compatibilidad si usas otras directivas.
-  imports: [CommonModule], 
-  templateUrl: './vanguardias.component.html',
-  styleUrls: ['./vanguardias.component.css']
+  selector: 'app-vanguardias',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './vanguardias.component.html',
+  styleUrls: ['./vanguardias.component.css'],
 })
 export class VanguardiasComponent implements OnInit {
-
   obraSeleccionada: any = null;
   mostrarModal = false;
 
@@ -29,9 +26,9 @@ export class VanguardiasComponent implements OnInit {
 
   // Declarar obras2 como una señal que contiene un array
   obras2 = signal<any[]>([]);
-  
+
   // Declarar isLoading como una señal, inicializada en true
-  isLoading = signal(true); 
+  isLoading = signal(true);
 
   constructor(private obrasService: ObrasService) {}
 
@@ -46,7 +43,7 @@ export class VanguardiasComponent implements OnInit {
       },
       complete: () => {
         this.isLoading.set(false);
-      }
+      },
     });
   }
 }

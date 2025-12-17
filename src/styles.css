@@ -2,6 +2,10 @@
 
 /* Art Palette: #000000, #14213D, #FCA311, #E5E5E5, #FFFFFF */
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-color: #E5E5E5; /* Light Gray Global Background */
   margin: 0;
