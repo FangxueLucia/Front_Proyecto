@@ -44,13 +44,12 @@ export class StoreComponent implements OnInit {
     'Laocoonte y sus hijos': 'Laocoonte.jpg',
     'Mosaico del Emperador Justiniano y su séquito (San Vital, Rávena)': 'MosaicoJustiniano.jpg',
 
-    // ✅ Los que te faltan (por la foto y por tus archivos del back)
     'David': 'David.jpg',
     'La Piedad de Villeneuve-les-Avignon': 'LaPiedadDeVilleneuve-les-Avignon.jpg',
     'El 3 de Mayo en Madrid (Los fusilamientos)': 'Fusilamiento.jpg',
     'La Libertad guiando al pueblo': 'LibertadGuiandoAlPueblo.jpg',
 
-    // (si los tienes en el seed)
+    // (si los tengo en el seed)
     'La persistencia de la memoria': 'LaPersistenciaDeLaMemoria.jpg',
     'El grito': 'ElGrito.jpg',
     'La noche estrellada': 'LaNocheEstrellada.jpg',
@@ -121,8 +120,8 @@ export class StoreComponent implements OnInit {
     return `${this.backendBaseUrl}/ImagenesDeObras/${file}`;
   }
 
-  // ✅ Convierte "Máscara funeraria..." -> "MascaraFunerariaDeTutankamon" (aprox)
-  // OJO: esto es fallback. Lo mejor es completar el imageMap.
+  // Aca corregimos mascara de tutancamon (tiraba error) (aprox)
+  
   private slugifyFileName(input: string): string {
     return (input ?? '')
       .normalize('NFD')
