@@ -111,7 +111,7 @@ export class StoreComponent implements OnInit {
     return (tipo ?? 'Sin tipo').trim();
   }
 
-  // ✅ URL de imagen para cada obra (con fallback)
+  //  URL de imagen para cada obra (con fallback)
   getImageUrl(obra: Obra): string {
     const file =
       this.imageMap[obra.titulo] ??
