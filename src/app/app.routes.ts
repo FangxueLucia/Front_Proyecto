@@ -1,3 +1,5 @@
+import { CartComponent } from './cart/cart';
+import { StoreDetailComponent } from './store-detail/store-detail';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
@@ -19,7 +21,11 @@ export const routes: Routes = [
     component: HomeComponent,
     pathMatch: 'full', // Indica a Angular que esta ruta debe coincidir con la URL raíz
   },
+ 
   // ------------------------ Rutas de lo que ofrece la web ------------------------
+  
+  { path: 'cart', component: CartComponent },
+
   {
     path: 'blog',
     component: BlogComponent,
@@ -28,7 +34,7 @@ export const routes: Routes = [
     path: 'store',
     component: StoreComponent,
   },
-  // ------------------------ Rutas de Arte ------------------------
+  {path: 'store/:id', component: StoreDetailComponent},  // ------------------------ Rutas de Arte ------------------------
   {
     path: 'arte-hasta-s-xix',
     component: ArteHastaSXIXComponent,

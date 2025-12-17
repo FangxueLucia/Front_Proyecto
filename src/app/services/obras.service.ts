@@ -1,27 +1,66 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Obra } from '../models/obra';
+
+export interface ObrasResponse {
+  results: Obra[];
+  page?: number;
+  limit?: number;
+  total?: number;
+  totalPages?: number;
+}
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ObrasService {
-
-  private apiUrl1 = 'http://localhost:3000/api/obras1';
-  private apiUrl2 = 'http://127.0.0.1:3000/api/obras2';
-  private apiUrl3 = 'http://localhost:3000/api/obras3';
+  private apiUrl = 'http://localhost:3000/api/obras';
 
   constructor(private http: HttpClient) {}
 
-  getObras1(): Observable<any> {
-    return this.http.get<any>(this.apiUrl1);
+  // Listado general (paginado)
+  // Ahora admite filtros opcionales vía query params
+  getObras(params?: Record<string, any>): Observable<ObrasResponse> {
+    let httpParams = new HttpParams();
+
+    // Construimos los parámetros solo si existen
+    if (params) {
+      Object.entries(params).forEach(([key, value]) => {
+        if (value === null || value === undefined) return;
+
+        const v = String(value).trim();
+        if (!v) return;
+
+        httpParams = httpParams.set(key, v);
+      });
+    }
+
+    return this.http.get<ObrasResponse>(this.apiUrl, {
+      params: httpParams,
+    });
   }
 
-  getObras2(): Observable<any> {
-    return this.http.get<any>(this.apiUrl2);
+  // Detalle por id (para /store/:id)
+  getObraById(id: string): Observable<Obra> {
+    return this.http.get<Obra>(`${this.apiUrl}/${id}`);
   }
 
-  getObras3(): Observable<any> {
-    return this.http.get<any>(this.apiUrl3);
+  // Colecciones 1 / 2 / 3
+  getObrasColeccion(n: 1 | 2 | 3): Observable<ObrasResponse> {
+    return this.http.get<ObrasResponse>(`${this.apiUrl}/coleccion/${n}`);
+  }
+
+  // Alias para compatibilidad
+  getObras1(): Observable<ObrasResponse> {
+    return this.getObrasColeccion(1);
+  }
+
+  getObras2(): Observable<ObrasResponse> {
+    return this.getObrasColeccion(2);
+  }
+
+  getObras3(): Observable<ObrasResponse> {
+    return this.getObrasColeccion(3);
   }
 }

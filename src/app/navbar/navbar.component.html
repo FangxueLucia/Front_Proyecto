@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-lg custom-navbar">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Eon 30 Gallery</a>
+    <a class="navbar-brand" routerLink="/">Eon 30 Gallery</a>
+
     <button
       class="navbar-toggler"
       type="button"
@@ -12,14 +13,17 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="/blog">Blog</a>
+          <a class="nav-link" routerLink="/blog">Blog</a>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link" href="/store">Store</a>
+          <a class="nav-link" routerLink="/store">Store</a>
         </li>
+
         <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
@@ -30,34 +34,63 @@
           >
             Explora
           </a>
+
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/arte-antiguo">Arte hasta el siglo XIX</a></li>
+            <li>
+              <a class="dropdown-item" routerLink="/arte-antiguo"
+                >Arte hasta el siglo XIX</a
+              >
+            </li>
             <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item" href="/old-masters">Vanguardias</a></li>
+            <li>
+              <a class="dropdown-item" routerLink="/old-masters">Vanguardias</a>
+            </li>
             <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item" href="/arte-contemporaneo">Arte Contemporáneo</a></li>
+            <li>
+              <a class="dropdown-item" routerLink="/arte-contemporaneo"
+                >Arte Contemporáneo</a
+              >
+            </li>
           </ul>
         </li>
       </ul>
-      <form class="d-flex" role="search">
+
+      <!-- Buscador (solo artista) -->
+      <form
+        class="d-flex align-items-center gap-2"
+        role="search"
+        (submit)="onSearchSubmit($event, artistaInput.value)"
+      >
         <input
-          class="form-control me-2"
+          #artistaInput
+          class="form-control me-1"
           type="search"
-          placeholder="Buscar arte..."
+          placeholder="Buscar artista..."
           aria-label="Search"
         />
+
         <button class="btn btn-outline-custom" type="submit">Buscar</button>
+
+        <!-- Carrito (icono + badge) -->
+        <a class="btn btn-cart ms-2" routerLink="/cart" aria-label="Carrito">
+          <span class="cart-icon">🛒</span>
+          <span class="badge rounded-pill bg-danger cart-badge">
+            {{ cart.count() }}
+          </span>
+        </a>
+
         <!-- Solo mostramos Login y Register si NO hay un usuario logueado (!user) -->
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="!user">
+        <ul class="navbar-nav ms-2 mb-2 mb-lg-0" *ngIf="!user">
           <li class="nav-item">
-            <a class="nav-link" href="/login">Login</a>
+            <a class="nav-link" routerLink="/login">Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/register">Register</a>
+            <a class="nav-link" routerLink="/register">Register</a>
           </li>
         </ul>
+
         <!-- Opción de Perfil solo si hay usuario (User Profile Dropdown) -->
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0 profile-menu" *ngIf="user">
+        <ul class="navbar-nav ms-2 mb-2 mb-lg-0 profile-menu" *ngIf="user">
           <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle d-flex align-items-center gap-2"
@@ -67,21 +100,32 @@
               aria-expanded="false"
             >
               <!-- Imagen de perfil del usuario -->
-              <img [src]="user.image" [alt]="user.username" class="profile-img" />
+              <img
+                [src]="user.image"
+                [alt]="user.username"
+                class="profile-img"
+              />
               <!-- Nombre del usuario -->
               <span>{{ user.username }}</span>
             </a>
+
             <ul class="dropdown-menu dropdown-menu-end">
               <!-- Información del usuario -->
               <li>
                 <span class="dropdown-item-text fw-bold">{{ user.name }}</span>
               </li>
               <li>
-                <span class="dropdown-item-text text-muted">@{{ user.username }}</span>
+                <span class="dropdown-item-text text-muted"
+                  >@{{ user.username }}</span
+                >
               </li>
               <li><hr class="dropdown-divider" /></li>
               <!-- Opción para cerrar sesión -->
-              <li><a class="dropdown-item" href="#" (click)="logout()">Cerrar Sesión</a></li>
+              <li>
+                <a class="dropdown-item" href="#" (click)="logout()"
+                  >Cerrar Sesión</a
+                >
+              </li>
             </ul>
           </li>
         </ul>
