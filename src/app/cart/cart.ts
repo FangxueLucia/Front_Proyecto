@@ -19,7 +19,6 @@ import { CartService } from '../services/cart.service';
   // Archivo HTML asociado al carrito
   templateUrl: './cart.html',
 
-  // Estilos propios del carrito
   styleUrls: ['./cart.css'],
 })
 export class CartComponent {
