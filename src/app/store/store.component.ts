@@ -30,11 +30,11 @@ export class StoreComponent implements OnInit {
     public cart: CartService
   ) {}
 
-  // ✅ Base URL del backend (donde está Express sirviendo /ImagenesDeObras)
+  //  Base URL del backend (donde está Express sirviendo /ImagenesDeObras)
   private readonly backendBaseUrl = 'http://localhost:3000';
 
-    // ✅ Mapeo manual (recomendado) para evitar problemas de acentos / caracteres raros
-  // Clave = título EXACTO como viene del backend, Valor = nombre del archivo (sin carpeta)
+    // Aca hice un map para las imagenes que no coincidian bien
+
   private readonly imageMap: Record<string, string> = {
     'Guernica': 'Guernica.jpg',
     'Máscara funeraria de Tutankamon': 'MascaraTutan-Kamon.jpg',
