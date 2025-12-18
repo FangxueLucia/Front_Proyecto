@@ -77,6 +77,7 @@ export class CarouselComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   stopAutoSlide(): void {
+    //funcion de tipo void: no retorna ningun valor
     if (this.slideInterval) {
       clearInterval(this.slideInterval);
     }
@@ -88,6 +89,7 @@ export class CarouselComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   // -------------- LIMPIEZA -------------
+  // se asegura de que el intervalo se detenga cuando se cambiamos a una página diferente, de esta manera, se mantiene la rapidez de la aplicacion
   ngOnDestroy(): void {
     clearInterval(this.slideInterval);
   }

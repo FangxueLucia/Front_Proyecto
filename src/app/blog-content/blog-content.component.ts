@@ -25,10 +25,11 @@ export class BlogContentComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id'); //obtiene los parámetros que definí en mis rutas y busca el id en la base de datos
     if (id) {
-      const blog = await this.blogService.getBlogDetail(id);
+      const blog = await this.blogService.getBlogDetail(id); //busca el blog en la base de datos por el id
       if (blog) {
+        //si encuentra el blog en la base de datos lo muestra en las cards
         this.imageUrl.set(blog.img);
         this.title.set(blog.title);
         this.description.set(blog.content);

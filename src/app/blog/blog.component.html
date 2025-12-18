@@ -1,11 +1,12 @@
 <div class="container">
   <h4>Descubre lo que otros usuarios han publicado</h4>
-  <!-- comprueba si existe un usuario logueado de forma reactiva -->
+  <!-- comprueba si existe un usuario logueado de forma reactiva y si es true, muestra el botón para poder hacer una entrada-->
   @if (authService.currentUser | async) {
   <button class="custom-btn" (click)="newBlogEntry()">Añadir una publicación</button>
   }
 
   <div class="cards-container">
+    <!-- comprueba si blogs está vacío y muestra un mensaje de carga si es así -->
     @if (blogs.length === 0) {
     <p style="text-align: center; width: 100%; grid-column: 1/-1">Cargando publicaciones...</p>
     }

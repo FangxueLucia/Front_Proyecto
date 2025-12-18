@@ -25,7 +25,6 @@ export class RessetPasswordComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    // hace lo mismo que el ngOnInit de CodeComponent
     const state = history.state;
     console.log(state);
     if (state && state['email']) {
@@ -45,11 +44,8 @@ export class RessetPasswordComponent implements OnInit {
   async onSubmit() {
     if (this.nonEqualPassword()) {
       console.log('Las contraseñas no coinciden. No se enviará el formulario.');
-      // Opcionalmente, puedes devolver aquí para detener el envío
       return;
     }
-
-    // 2. Si no hay error, procede con el envío (tu código original)
     const resetPassword = {
       email: this.email(),
       password: this.password(),

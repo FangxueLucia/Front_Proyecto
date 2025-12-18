@@ -16,8 +16,8 @@ export class BlogComponent implements OnInit {
 
   constructor(
     private router: Router,
-    public connectService: ConnectService, //permite que el boton de añadir una entrada al blog solo aparezca si el usuario está logueado
-    public authService: AuthService,
+    public connectService: ConnectService, //permite que se vean las entradas del blog a todo el mundo incluso si no estás logueado
+    public authService: AuthService, //permite que el boton de añadir una entrada al blog solo aparezca si el usuario está logueado
     private cdr: ChangeDetectorRef
   ) {}
 

@@ -127,7 +127,7 @@ export class ConnectService {
   //---------------------------- Ver los blogs ya creados ------------------------------------------
   async getBlogs(): Promise<any> {
     try {
-      const response: AxiosResponse = await instance.get('blog');
+      const response: AxiosResponse = await instance.get('blog'); //envía la petición al backend
       return response.data;
     } catch (error) {
       console.error('Error getting blogs:', error);
@@ -139,7 +139,7 @@ export class ConnectService {
 
   async getBlogDetail(id: string): Promise<any> {
     try {
-      const response: AxiosResponse = await instance.get(`blog/${id}`);
+      const response: AxiosResponse = await instance.get(`blog/${id}`); // identifica la entrada a la que queremos acceder en detalle por su id
       return response.data;
     } catch (error) {
       console.error('Error getting blog detail:', error);
@@ -150,7 +150,7 @@ export class ConnectService {
   async newBlogEntry(blog: any): Promise<any> {
     try {
       console.log('processing new entry');
-      const response: AxiosResponse = await instance.post('blog', blog);
+      const response: AxiosResponse = await instance.post('blog', blog); // envía la información que se recibe al backend para que se guarde en la base de datos
       console.log('new entry response received');
       return response.data;
     } catch (error) {
