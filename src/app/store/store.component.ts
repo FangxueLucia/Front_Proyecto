@@ -28,12 +28,12 @@ export class StoreComponent implements OnInit {
   constructor(
     private obrasService: ObrasService,
     public cart: CartService
-  ) {}
+  ) { }
 
   //  Base URL del backend (donde está Express sirviendo /ImagenesDeObras)
   private readonly backendBaseUrl = 'http://localhost:3000';
 
-    // Aca hice un map para las imagenes que no coincidian bien
+  // Aca hice un map para las imagenes que no coincidian bien
 
   private readonly imageMap: Record<string, string> = {
     'Guernica': 'Guernica.jpg',
@@ -113,6 +113,10 @@ export class StoreComponent implements OnInit {
 
   //  URL de imagen para cada obra (con fallback)
   getImageUrl(obra: Obra): string {
+    if (obra.image) {
+      return `${this.backendBaseUrl}${obra.image}`;
+    }
+
     const file =
       this.imageMap[obra.titulo] ??
       this.slugifyFileName(obra.titulo) + '.jpg';
@@ -121,7 +125,7 @@ export class StoreComponent implements OnInit {
   }
 
   // Aca corregimos mascara de tutancamon (tiraba error) (aprox)
-  
+
   private slugifyFileName(input: string): string {
     return (input ?? '')
       .normalize('NFD')

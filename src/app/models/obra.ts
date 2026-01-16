@@ -18,4 +18,5 @@ export interface Obra {
   // ✅ NUEVO (opcional): URL de imagen para mostrar en Marketplace / detalle
   // No rompe nada porque es opcional.
   imagenUrl?: string;
+  image?: string;
 }
